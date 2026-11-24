@@ -1,0 +1,42 @@
+{
+  "name": "@olostep/langchain",
+  "version": "0.1.0",
+  "description": "LangChain.js tools for Olostep: live web search, scraping, crawling, answers with sources and batch extraction (up to 100k URLs per batch) for AI agents.",
+  "keywords": ["langchain", "langchainjs", "olostep", "web-search", "web-scraping", "crawling", "ai-agents", "tools"],
+  "homepage": "https://www.olostep.com",
+  "repository": { "type": "git", "url": "git+https://github.com/olostep-api/olostep-langchain-js.git" },
+  "bugs": { "url": "https://github.com/olostep-api/olostep-langchain-js/issues" },
+  "license": "MIT",
+  "author": "Olostep <info@olostep.com>",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+      "require": { "types": "./dist/index.d.cts", "default": "./dist/index.cjs" }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/*.test.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "@langchain/core": ">=1.0.0 <2.0.0",
+    "zod": "^3.25.0 || ^4.0.0"
+  },
+  "devDependencies": {
+    "@langchain/core": "^1.5.1",
+    "@types/node": "^22.0.0",
+    "tsup": "^8.5.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.6.0",
+    "zod": "^4.0.0"
+  },
+  "engines": { "node": ">=20" }
+}
